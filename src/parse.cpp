@@ -144,7 +144,7 @@ Local<Value> ParseField(Isolate *isolate,
       v = Nan::CopyBuffer(const_cast<char *>(value.data()), value.length())
               .ToLocalChecked();
     else
-      v = Nan::New<String>(value.c_str()).ToLocalChecked();
+		v = Nan::New<String>(const_cast<char *>(value.data()), value.length()).ToLocalChecked();
     break;
   }
   }
